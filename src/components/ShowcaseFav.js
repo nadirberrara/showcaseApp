@@ -5,7 +5,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import GradientsList from './GradientsList';
 import CardSection from './common/CardSection';
 import Button from './common/Button';
-import * as actions from './actions/FavoriteAction';
+import * as actions from './actions';
 
 class ShowcaseFav extends React.Component {
   static navigationOptions = ({ navigation }) => {

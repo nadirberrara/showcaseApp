@@ -4,7 +4,7 @@ import { NavigationActions } from 'react-navigation';
 import { TouchableOpacity, ScrollView, ListView, View } from 'react-native';
 import Icon from 'react-native-vector-icons/Entypo';
 import Button from './common/Button';
-import * as actions from './actions/FavoriteAction';
+import * as actions from './actions';
 import GradientsList from './GradientsList';
 import CardSection from './common/CardSection';
 
