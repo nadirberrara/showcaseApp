@@ -94,7 +94,7 @@ const ds = new ListView.DataSource({
 
 const mapStateToProps = state => {
   return {
-    items: ds.cloneWithRows(state)
+    items: ds.cloneWithRows(state.gradients)
   };
 };
 

@@ -92,7 +92,7 @@ const ds = new ListView.DataSource({
 });
 
 const mapStateToProps = state => {
-  const favGradients = state.filter(item => item.fav);
+  const favGradients = state.gradients.filter(item => item.fav);
   return {
     items: ds.cloneWithRows(favGradients)
   };
