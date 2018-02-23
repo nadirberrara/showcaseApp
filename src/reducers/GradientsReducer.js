@@ -1,6 +1,4 @@
-import gradientsData from '../data/gradients.json';
-
-export default (state = gradientsData, action) => {
+export default (state = {}, action) => {
   switch (action.type) {
     case 'star-toggle':
       return state.map(item => {
@@ -14,8 +12,8 @@ export default (state = gradientsData, action) => {
         return { ...item, fav: false };
       });
     case 'gradients_fetch_success':
-      console.log('gradients_fetch_success', action);
-      return state;
+      console.log('gradients_fetch_success', action.payload);
+      return action.payload;
     default:
       return state;
   }

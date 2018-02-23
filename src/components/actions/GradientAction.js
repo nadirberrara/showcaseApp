@@ -1,12 +1,18 @@
 import firebase from 'firebase';
 
 export const gradientsFetch = () => {
+  const { currentUser } = firebase.auth();
+  console.log('action', currentUser);
   return dispatch => {
     firebase
       .database()
-      .ref('/users/gradients')
-      .on('value', snapshot => {
-        dispatch({ type: 'gradients_fetch_success', payload: snapshot.val() });
+      .ref('/gradients')
+      .once('value')
+      .then(snapshot => {
+        dispatch({
+          type: 'gradients_fetch_success',
+          payload: snapshot.val()
+        });
       });
   };
 };
