@@ -13,6 +13,9 @@ export default (state = gradientsData, action) => {
       return state.map(item => {
         return { ...item, fav: false };
       });
+    case 'gradients_fetch_success':
+      console.log('gradients_fetch_success', action);
+      return state;
     default:
       return state;
   }

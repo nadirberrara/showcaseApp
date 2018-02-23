@@ -30,6 +30,10 @@ class ShowcaseAll extends React.Component {
     };
   };
 
+  componentWillMount() {
+    this.props.gradientsFetch();
+  }
+
   render() {
     return (
       <View
