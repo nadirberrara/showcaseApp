@@ -92,8 +92,12 @@ const ds = new ListView.DataSource({
 });
 
 const mapStateToProps = state => {
-  const favGradients = state.gradients.filter(item => item.fav);
+  const favGradients = state.gradients.filter(item =>
+    state.favorites.includes(item.id)
+  );
+  console.log('favorites:', state.favorites);
   return {
+    favorites: state.favorites,
     items: ds.cloneWithRows(favGradients)
   };
 };

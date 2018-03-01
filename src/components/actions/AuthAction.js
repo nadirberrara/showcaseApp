@@ -1,4 +1,5 @@
 import firebase from 'firebase';
+import { listenGradientFav, fetchGradientFav } from './FavoriteAction';
 
 export const onEmailInput = value => {
   return { type: 'email_changed', payload: value };
@@ -20,8 +21,10 @@ export const onLoginButtonPress = ({ email, password, navigation }) => {
           type: 'signin_success',
           payload: user
         });
-        navigation.navigate('All');
       })
+      .then(() => dispatch(listenGradientFav()))
+      .then(() => dispatch(fetchGradientFav()))
+      .then(() => navigation.navigate('All'))
       .catch(() => {
         firebase
           .auth()

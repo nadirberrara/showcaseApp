@@ -1,8 +1,6 @@
 import firebase from 'firebase';
 
 export const gradientsFetch = () => {
-  const { currentUser } = firebase.auth();
-  console.log('action', currentUser);
   return dispatch => {
     firebase
       .database()

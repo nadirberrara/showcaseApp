@@ -35,23 +35,18 @@ class ShowcaseAll extends React.Component {
   }
 
   render() {
+    const {
+      containerStyle,
+      scrollviewStyle,
+      buttonView,
+      buttonCardSection,
+      containerCardSection
+    } = styles;
+
     return (
-      <View
-        style={{
-          padding: 1,
-          flexDirection: 'column',
-          backgroundColor: 'white',
-          flex: 1
-        }}
-      >
-        <CardSection
-          style={{
-            padding: 1,
-            flexDirection: 'column',
-            flex: 1
-          }}
-        >
-          <ScrollView style={{ backgroundColor: 'white', flex: 1 }}>
+      <View style={containerStyle}>
+        <CardSection style={containerCardSection}>
+          <ScrollView style={scrollviewStyle}>
             <CardSection
               style={{
                 flexDirection: 'column'
@@ -64,22 +59,8 @@ class ShowcaseAll extends React.Component {
             </CardSection>
           </ScrollView>
 
-          <View
-            style={{
-              alignItems: 'center',
-              zIndex: 10,
-              backgroundColor: 'rgba(255, 255, 255, 0.5)',
-              padding: 40
-            }}
-          >
-            <CardSection
-              style={{
-                bottom: 20,
-                position: 'absolute',
-                width: 220,
-                backgroundColor: 'rgba(255, 255, 255, 0.5)'
-              }}
-            >
+          <View style={buttonView}>
+            <CardSection style={buttonCardSection}>
               <Button
                 buttonTitle="Show all my favorites"
                 onPress={() => this.props.navigation.navigate('Fav')}
@@ -91,6 +72,36 @@ class ShowcaseAll extends React.Component {
     );
   }
 }
+
+const styles = {
+  containerStyle: {
+    padding: 1,
+    flexDirection: 'column',
+    backgroundColor: 'white',
+    flex: 1
+  },
+  containerCardSection: {
+    padding: 1,
+    flexDirection: 'column',
+    flex: 1
+  },
+  scrollviewStyle: {
+    backgroundColor: 'white',
+    flex: 1
+  },
+  buttonView: {
+    alignItems: 'center',
+    zIndex: 10,
+    backgroundColor: 'rgba(255, 255, 255, 0.5)',
+    padding: 40
+  },
+  buttonCardSection: {
+    bottom: 20,
+    position: 'absolute',
+    width: 220,
+    backgroundColor: 'rgba(255, 255, 255, 0.5)'
+  }
+};
 
 const ds = new ListView.DataSource({
   rowHasChanged: (r1, r2) => r1 !== r2

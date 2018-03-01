@@ -42,9 +42,8 @@ class Gradient extends React.Component {
           <Text style={{ fontSize: 10 }}> Suggested for you </Text>
         </CardSection>
       );
-    } else {
-      return <Text />;
     }
+    return <Text />;
   }
 }
 
