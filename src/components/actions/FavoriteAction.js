@@ -68,3 +68,12 @@ export const listenGradientFav = id => {
     });
   };
 };
+
+export const clearAllFavorites = () => {
+  const { currentUser } = firebase.auth();
+  const favRefs = firebase.database().ref(`${currentUser.uid}`);
+  return () => {
+    favRefs.child('favorites').remove();
+    // dispatch({ type: 'favorites_cleared' });
+  };
+};
