@@ -15,9 +15,14 @@ class Gradient extends React.Component {
       endy,
       color1,
       color2,
-      fav,
       id
     } = this.props.gradient;
+
+    const isGradientFavorite = () => {
+      if (this.props.favorites) {
+        return this.props.favorites.includes(id);
+      }
+    };
 
     return (
       <View
@@ -40,7 +45,7 @@ class Gradient extends React.Component {
         >
           <TouchableOpacity onPress={this.props.onPress}>
             <Icon
-              name={fav ? 'star' : 'star-outlined'}
+              name={isGradientFavorite() ? 'star' : 'star-outlined'}
               size={30}
               color="#900"
               style={iconStar}

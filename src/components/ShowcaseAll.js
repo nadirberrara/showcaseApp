@@ -32,6 +32,7 @@ class ShowcaseAll extends React.Component {
 
   componentWillMount() {
     this.props.gradientsFetch();
+    this.props.favoritesFetch();
   }
 
   render() {
@@ -55,6 +56,7 @@ class ShowcaseAll extends React.Component {
               <GradientsList
                 dataSource={this.props.items}
                 secondText={'Suggested for you'}
+                favorites={this.props.favArray}
               />
             </CardSection>
           </ScrollView>
@@ -108,7 +110,13 @@ const ds = new ListView.DataSource({
 });
 
 const mapStateToProps = state => {
+  const favGradients = state.gradients.filter(item =>
+    state.favorites.includes(item.id)
+  );
+  const favGradientsArray = favGradients.map(item => item.id);
   return {
+    favArray: favGradientsArray,
+    favorites: state.favorites,
     items: ds.cloneWithRows(state.gradients)
   };
 };

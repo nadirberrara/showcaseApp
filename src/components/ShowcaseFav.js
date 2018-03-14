@@ -49,6 +49,7 @@ class ShowcaseFav extends React.Component {
               <GradientsList
                 dataSource={this.props.items}
                 secondText={'In four favorites'}
+                favorites={this.props.favArray}
               />
             </CardSection>
           </ScrollView>
@@ -103,10 +104,13 @@ const ds = new ListView.DataSource({
 });
 
 const mapStateToProps = state => {
+  console.log(state);
   const favGradients = state.gradients.filter(item =>
     state.favorites.includes(item.id)
   );
+  const favGradientsArray = favGradients.map(item => item.id);
   return {
+    favArray: favGradientsArray,
     favorites: state.favorites,
     items: ds.cloneWithRows(favGradients)
   };

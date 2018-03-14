@@ -22,6 +22,7 @@ class GradientsList extends React.Component {
           gradient={rowData}
           secondText={this.props.secondText}
           style={{ borderWidth: 3 }}
+          favorites={this.props.favorites}
         />
       </View>
     );

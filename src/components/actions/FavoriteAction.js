@@ -21,7 +21,6 @@ export const fetchGradientFav = () => {
           type: 'favorites_fetched',
           payload: { favList: favListArray }
         });
-        console.log('fetchGradientFav -> ', favListArray);
         return snapshot.val();
       });
   };
@@ -74,6 +73,18 @@ export const clearAllFavorites = () => {
   const favRefs = firebase.database().ref(`${currentUser.uid}`);
   return () => {
     favRefs.child('favorites').remove();
-    // dispatch({ type: 'favorites_cleared' });
+  };
+};
+
+export const favoritesFetch = () => {
+  const { currentUser } = firebase.auth();
+  const favRefs = firebase.database().ref(`${currentUser.uid}/favorites`);
+  return dispatch => {
+    favRefs.once('value').then(snapshot => {
+      dispatch({
+        type: 'favorites_fetch_success',
+        payload: snapshot.val()
+      });
+    });
   };
 };
