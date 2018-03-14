@@ -110,10 +110,14 @@ const ds = new ListView.DataSource({
 });
 
 const mapStateToProps = state => {
-  const favGradients = state.gradients.filter(item =>
-    state.favorites.includes(item.id)
-  );
-  const favGradientsArray = favGradients.map(item => item.id);
+  let favGradientsArray = [];
+  if (state.gradients && Array.isArray(state.gradients)) {
+    const favGradients = state.gradients.filter(item =>
+      state.favorites.includes(item.id)
+    );
+    favGradientsArray = favGradients.map(item => item.id);
+  }
+
   return {
     favArray: favGradientsArray,
     favorites: state.favorites,

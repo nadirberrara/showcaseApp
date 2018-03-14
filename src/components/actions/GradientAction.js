@@ -7,6 +7,7 @@ export const gradientsFetch = () => {
       .ref('/gradients')
       .once('value')
       .then(snapshot => {
+        console.log(snapshot);
         dispatch({
           type: 'gradients_fetch_success',
           payload: snapshot.val()
